@@ -1,0 +1,62 @@
+\documentclass[a4paper,
+  twoside, % to have to sided mode
+  headlines=2.1 % number of lines in the heading, increase if you want more
+  ]{scrartcl}
+\usepackage[
+  margin=2cm,
+  includefoot,
+  footskip=35pt,
+  includeheadfoot,
+  headsep=0.5cm,
+]{geometry}
+\usepackage[utf8]{inputenc}
+% \usepackage[ngerman]{babel} % uncomment this line instead of the next one when writing in German
+\usepackage[english]{babel}
+\usepackage[T1]{fontenc}
+\usepackage{mathtools}
+\usepackage{amssymb}
+\usepackage{lmodern}
+\usepackage[automark,headsepline]{scrlayer-scrpage}
+\usepackage{enumerate}
+\usepackage{sgame}
+\usepackage[protrusion=true,expansion=true,kerning]{microtype} % just looks much nicer with this
+
+\newcommand{\yourname}{Jonas \\ \texttt{123456789} \and Niklas Hain \\ \texttt{123456789} \and Sebastian Weber \\ \texttt{5000486}} % Add more authors with the \and command
+% \newcommand{\yourname}{Your Name \\ \texttt{123456789} \and Other Name \\ \texttt{987654321}} % Here an example with matriculation numbers. If you use newlines adjust the command \headingname (don't use new lines there)
+\newcommand{\headingname}{\yourname} % Names as they appear in the heading. For example use only surnames when too long
+% \newcommand{\headingname}{Dein Name, Anderer Name} % This is an exmaple of a nicely formatted list
+\newcommand{\lecture}{Game Theory}
+\newcommand{\sheetnum}{1} % Sheet number
+\author{\yourname}
+\title{\lecture}
+\subtitle{Exercise Sheet \sheetnum}
+% \subtitle{Übungsblatt \sheetnum} % German version
+\date{} % If you want a date add it here (simply use \today for the current date)
+
+% Page heading definitions
+\pagestyle{scrheadings}
+\setkomafont{pagehead}{\normalfont}
+\lohead{\lecture\\\headingname}
+\lehead{\lecture\\\headingname}
+\rohead{Exercise Sheet \sheetnum}
+\rehead{Exercise Sheet \sheetnum}
+% \rohead{Übungsblatt \sheetnum} % German version
+% \rehead{Übungsblatt \sheetnum} % German version
+
+\begin{document}
+
+\maketitle
+
+\section{Excercise 1.1}
+We formed a group with: , Sebastian Weber (5000486).
+
+\section{Excercise 1.2 (Strategic Games)}
+
+\begin{align}
+	G = \langle N, (A_i)_{i\in N}, (u_i)_{i \in N}\rangle\\
+	N = {1,2}\\
+	A_i = {L_i, Sp_i, Sc_i, P_i, R_i}\\
+	i = 1,2
+\end{align}\\
+Payoff matrix:\\
+\end{document}
