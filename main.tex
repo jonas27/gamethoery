@@ -19,9 +19,10 @@
 \usepackage[automark,headsepline]{scrlayer-scrpage}
 \usepackage{enumerate}
 \usepackage{sgame}
+\usepackage{float}
 \usepackage[protrusion=true,expansion=true,kerning]{microtype} % just looks much nicer with this
 
-\newcommand{\yourname}{Jonas \\ \texttt{123456789} \and Niklas Hain \\ \texttt{123456789} \and Sebastian Weber \\ \texttt{5000486}} % Add more authors with the \and command
+\newcommand{\yourname}{Jonas Burster \texttt{4953222} \\ \and Niklas Hain \texttt{4122489} \\ \and Sebastian Weber \texttt{5000486}} % Add more authors with the \and command
 % \newcommand{\yourname}{Your Name \\ \texttt{123456789} \and Other Name \\ \texttt{987654321}} % Here an example with matriculation numbers. If you use newlines adjust the command \headingname (don't use new lines there)
 \newcommand{\headingname}{\yourname} % Names as they appear in the heading. For example use only surnames when too long
 % \newcommand{\headingname}{Dein Name, Anderer Name} % This is an exmaple of a nicely formatted list
@@ -47,16 +48,107 @@
 
 \maketitle
 
-\section{Excercise 1.1}
-We formed a group with: , Sebastian Weber (5000486).
+\section*{Excercise 1.1}
+We formed a group with: Niklas Hain (4122489), Sebastian Weber (5000486), Jonas Burster (4953222).
 
-\section{Excercise 1.2 (Strategic Games)}
+\section*{Excercise 1.2 (Strategic Games)}
 
 \begin{align}
 	G = \langle N, (A_i)_{i\in N}, (u_i)_{i \in N}\rangle\\
-	N = {1,2}\\
-	A_i = {L_i, Sp_i, Sc_i, P_i, R_i}\\
+	N = \lbrace 1,2 \rbrace\\
+	A_i = \lbrace L_i, Sp_i, Sc_i, P_i, R_i \rbrace\\
 	i = 1,2
 \end{align}\\
 Payoff matrix:\\
+\begin{game}{5}{5}[Player~1][Player~2]
+& $L_2$ & $Sp_2$ & $Sc_2$ & $P_2$ & $R_2$ \\
+$L_1$ &(0,0) &(1,0) &(0,1) &(1,0) &(0,1)\\
+$Sp_1$ &(0,1) &(0,0) &(1,0) &(0,1) &(1,0)\\
+$Sc_1$ &(1,0) &(0,1) &(0,0) &(1,0) &(0,1)\\
+$P_1$ &(0,1) &(1,0) &(0,1) &(0,0) &(1,0)\\
+$R_1$ &(1,0) &(0,1) &(1,0) &(0,1) &(0,0)
+\end{game}
+
+\section*{Excercise 1.3}
+
+\begin{table}[H]
+\begin{tabular}{|l|l|l|l|l|l|}
+\hline
+ & a_2 & b_2 & c_2 & d_2 \\ \hline
+a_1 & 6,2 & 2,7 & 1,4 & 0,3\\ \hline
+b_1 & 1,0 & 3,2 & 2,1 & 1,1\\ \hline
+c_1 & 7,0 & 2,2 & 1,5 & 6,1 \\ \hline
+d_1 & 8,4 & 1,2 & 0,2 & 3,9 \\ \hline
+\end{tabular}
+\end{table}
+
+Spieler 2: $d_2$ dominiert strikt $a_2$:
+
+\begin{table}[H]
+\begin{tabular}{|l|l|l|l|l|}
+\hline
+ & b_2 & c_2 & d_2 \\ \hline
+a_1 & 2,7 & 1,4 & 0,3\\ \hline
+b_1 & 3,2 & 2,1 & 1,1\\ \hline
+c_1 & 2,2 & 1,5 & 6,1 \\ \hline
+d_1 & 1,2 & 0,2 & 3,9 \\ \hline
+\end{tabular}
+\end{table}
+
+Spieler 1: $b_1$ dominiert strikt $a_1$:
+
+\begin{table}[H]
+\begin{tabular}{|l|l|l|l|l|}
+\hline
+ & b_2 & c_2 & d_2 \\ \hline
+b_1 & 3,2 & 2,1 & 1,1\\ \hline
+c_1 & 2,2 & 1,5 & 6,1 \\ \hline
+d_1 & 1,2 & 0,2 & 3,9 \\ \hline
+\end{tabular}
+\end{table}
+
+Spieler 1: $c_1$ dominiert strikt $d_1$:
+
+\begin{table}[H]
+\begin{tabular}{|l|l|l|l|l|}
+\hline
+ & b_2 & c_2 & d_2\\ \hline
+b_1 & 3,2 & 2,1 & 1,1\\ \hline
+c_1 & 2,2 & 1,5 & 6,1\\ \hline
+\end{tabular}
+\end{table}
+
+Spieler 2: $b_2$ dominiert strikt $d_2$
+
+\begin{table}[H]
+\begin{tabular}{|l|l|l|l|l|}
+\hline
+ & b_2 & c_2\\ \hline
+b_1 & 3,2 & 2,1\\ \hline
+c_1 & 2,2 & 1,5\\ \hline
+\end{tabular}
+\end{table}
+
+Spieler 2: $b_1$ dominiert strikt $c_1$
+\begin{table}[H]
+\begin{tabular}{|l|l|l|l|l|l|}
+\hline
+ & b_2 & c_2\\ \hline
+b_1 & 3,2 & 2,1\\ \hline
+\end{tabular}
+\end{table}
+
+Spieler 1: $b_2$ dominiert strikt $c_2$
+\begin{table}[H]
+\begin{tabular}{|l|l|l|l|l|l|}
+\hline
+ & b_2\\ \hline
+b_1 & 3,2\\ \hline
+\end{tabular}
+\end{table}
+
+a) $b_1$ and $b_2$ are strictly dominating strategies for both players.
+
+b) Player 1 should always play $b_1$.
+
 \end{document}
