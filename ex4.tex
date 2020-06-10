@@ -1,0 +1,107 @@
+\documentclass[a4paper,
+  twoside, % to have to sided mode
+  headlines=2.1 % number of lines in the heading, increase if you want more
+  ]{scrartcl}
+\usepackage[
+  margin=2cm,
+  includefoot,
+  footskip=35pt,
+  includeheadfoot,
+  headsep=0.5cm,
+]{geometry}
+\usepackage[utf8]{inputenc}
+% \usepackage[ngerman]{babel} % uncomment this line instead of the next one when writing in German
+\usepackage[english]{babel}
+\usepackage[T1]{fontenc}
+\usepackage{mathtools}
+\usepackage{amssymb}
+\usepackage{lmodern}
+\usepackage[automark,headsepline]{scrlayer-scrpage}
+\usepackage{enumerate}
+\usepackage{sgame}
+\usepackage{float}
+\usepackage{stmaryrd}
+\usepackage{ mathrsfs }
+\usepackage[protrusion=true,expansion=true,kerning]{microtype} % just looks much nicer with this
+
+% Reset equation after section and subsection
+% \counterwithin*{equation}{section}
+% \counterwithin*{equation}{subsection}
+
+\newcommand{\yourname}{Jonas Burster \texttt{4953222} \\ \and Niklas Hain \texttt{4122489} \\ \and Sebastian Weber \texttt{5000486}} % Add more authors with the \and command
+% \newcommand{\yourname}{Your Name \\ \texttt{123456789} \and Other Name \\ \texttt{987654321}} % Here an example with matriculation numbers. If you use newlines adjust the command \headingname (don't use new lines there)
+\newcommand{\headingname}{\yourname} % Names as they appear in the heading. For example use only surnames when too long
+% \newcommand{\headingname}{Dein Name, Anderer Name} % This is an exmaple of a nicely formatted list
+\newcommand{\lecture}{Game Theory}
+\newcommand{\sheetnum}{1} % Sheet number
+\author{\yourname}
+\title{\vspace{-20mm}\lecture}
+\subtitle{Exercise Sheet 3}
+% \subtitle{Übungsblatt \sheetnum} % German version
+\date{} % If you want a date add it here (simply use \today for the current date)
+
+% Page heading definitions
+\pagestyle{scrheadings}
+\setkomafont{pagehead}{\normalfont}
+\lohead{\lecture\\\headingname}
+\lehead{\lecture\\\headingname}
+\rohead{Exercise Sheet 2}
+\rehead{Exercise Sheet 2}
+% \rohead{Übungsblatt \sheetnum} % German version
+% \rehead{Übungsblatt \sheetnum} % German version
+
+\begin{document}
+\maketitle
+\subsection*{Exercise 4.1 a - Sebastian}
+Since A and B for both players are in the support ($supp(\alpha_1)=supp(\alpha_2)=\lbrace A, B \rbrace$), we get the following linear program:
+\begin{align}
+    u = -10 \alpha_A + \beta(B)\\
+    u = -\beta(B)\\
+    \beta(A) +\beta(B) = 1\\
+    v=-10\alpha(A)+\alpha(B)\\
+    v = - \alpha(B)\\
+    \alpha(A) + \alpha(B) = 1
+\end{align}
+Solving it, results in:
+\begin{align}
+    \beta(A) =\frac{1}{6}\\
+    \beta(B) = \frac{5}{6}\\
+    \alpha(A) = \frac{1}{6}\\
+    \alpha(B) = \frac{1}{6}\\
+\end{align}
+With this we obtain the mixed Nash Equilibrium of $(\frac{-5}{6}, \frac{-5}{6})$. 
+
+\subsection*{Exercise 4.1 a - Jonas}
+Since A and B for both players are in the support ($supp(\alpha_1)=supp(\alpha_2)=\lbrace A, B \rbrace$), we get the following linear program:
+\begin{align}
+    \alpha_1 -10 \beta(A) + \beta(B)\\
+    u = -\beta(B)\\
+    \beta(A) +\beta(B) = 1\\
+    v=-10\alpha(A)+\alpha(B)\\
+    v = - \alpha(B)\\
+    \alpha(A) + \alpha(B) = 1
+\end{align}
+Solving it, results in:
+\begin{align}
+    \beta(A) =\frac{1}{6}\\
+    \beta(B) = \frac{5}{6}\\
+    \alpha(A) = \frac{1}{6}\\
+    \alpha(B) = \frac{1}{6}\\
+\end{align}
+With this we obtain the mixed Nash Equilibrium of $(\frac{-5}{6}, \frac{-5}{6})$. 
+
+\subsection*{b -Sebastian}
+\begin{align}
+    \Omega = \lbrace x,y,z\rbrace\\
+    \mathscr{P}_1=\lbrace \lbrace x,y\rbrace,\lbrace z\rbrace \rbrace\\
+    \mathscr{P}_2=\lbrace \lbrace x \rbrace,\lbrace y,z\rbrace \rbrace\\
+    \pi(x)=\pi(y)=\pi(z)\\
+    \sigma_1(x)=\sigma(y)=B\\
+    \sigma_1(z)=A\\
+    \sigma_2(x)=A\\
+    \sigma_2(y)=\sigma(z)=B
+\end{align}
+Therefore we get a Payoff of (0, 0) and this fulfills the condition correlated NE > mixed NE: \begin{align}
+     (0,0)>(\frac{-5}{6}, \frac{-5}{6})
+\end{align}
+\end{document}

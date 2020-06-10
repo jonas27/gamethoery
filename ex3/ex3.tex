@@ -1,0 +1,281 @@
+\documentclass[a4paper,
+  twoside, % to have to sided mode
+  headlines=2.1 % number of lines in the heading, increase if you want more
+  ]{scrartcl}
+\usepackage[
+  margin=2cm,
+  includefoot,
+  footskip=35pt,
+  includeheadfoot,
+  headsep=0.5cm,
+]{geometry}
+\usepackage[utf8]{inputenc}
+% \usepackage[ngerman]{babel} % uncomment this line instead of the next one when writing in German
+\usepackage[english]{babel}
+\usepackage[T1]{fontenc}
+\usepackage{mathtools}
+\usepackage{amssymb}
+\usepackage{lmodern}
+\usepackage[automark,headsepline]{scrlayer-scrpage}
+\usepackage{enumerate}
+\usepackage{sgame}
+\usepackage{float}
+\usepackage{stmaryrd}
+\usepackage[protrusion=true,expansion=true,kerning]{microtype} % just looks much nicer with this
+
+% Reset equation after section and subsection
+% \counterwithin*{equation}{section}
+% \counterwithin*{equation}{subsection}
+
+\newcommand{\yourname}{Jonas Burster \texttt{4953222} \\ \and Niklas Hain \texttt{4122489} \\ \and Sebastian Weber \texttt{5000486}} % Add more authors with the \and command
+% \newcommand{\yourname}{Your Name \\ \texttt{123456789} \and Other Name \\ \texttt{987654321}} % Here an example with matriculation numbers. If you use newlines adjust the command \headingname (don't use new lines there)
+\newcommand{\headingname}{\yourname} % Names as they appear in the heading. For example use only surnames when too long
+% \newcommand{\headingname}{Dein Name, Anderer Name} % This is an exmaple of a nicely formatted list
+\newcommand{\lecture}{Game Theory}
+\newcommand{\sheetnum}{1} % Sheet number
+\author{\yourname}
+\title{\vspace{-20mm}\lecture}
+\subtitle{Exercise Sheet 3}
+% \subtitle{Übungsblatt \sheetnum} % German version
+\date{} % If you want a date add it here (simply use \today for the current date)
+
+% Page heading definitions
+\pagestyle{scrheadings}
+\setkomafont{pagehead}{\normalfont}
+\lohead{\lecture\\\headingname}
+\lehead{\lecture\\\headingname}
+\rohead{Exercise Sheet 2}
+\rehead{Exercise Sheet 2}
+% \rohead{Übungsblatt \sheetnum} % German version
+% \rehead{Übungsblatt \sheetnum} % German version
+
+\begin{document}
+\maketitle
+
+% \subsection*{3.1}
+% Gegeben:
+% \begin{equation}\label{vor}
+%     \alpha_i'(a'_i)=\alpha_i(a'_i)+\alpha_i(a_i)
+% \end{equation}
+% Da $a_i \notin B_i(\alpha_{-i})$ und $a'_i \in B_i(\alpha_{-i})$ ist:\\ 
+% \begin{equation}\label{payout}
+%     u_i(a'_i)>u_i(a_i)
+% \end{equation}
+% Da
+% $\alpha'_i(a''_i) = \alpha_i(a''_i) \text{ für alle } a''_i \in A_i \setminus \{a_i, a'_i\}$
+% gilt:
+% \begin{equation}
+%     \sum_ {a''} := \sum_{a''_i\in A_i \setminus \{a_i, a'_i\}} p_{\alpha'_i}(a''_i) u_i(a''_i) = \sum_{a''_i\in A_i \setminus \{a_i, a'_i\}} p_{\alpha_i}(a''_i) u_i(a''_i)
+% \end{equation}
+% \begin{align}
+%     U_i(\alpha'_i,\alpha_{-i}) &=  \sum_ {a''} + u_i(a'_i) \cdot \alpha_i (a'_i)^{n-1} \cdot \alpha'_i(a'_i) \\
+%     &= \sum_ {a''} + u_i(a'_i) \cdot \alpha_i (a'_i)^{n-1} (\alpha_i(a'_i) + \alpha_i (a_i)) \\
+%     &= \sum_ {a''} + u_i(a'_i) \cdot \alpha_i (a'_i)^{n-1} \cdot \alpha_i(a'_i) +u_i(a'_i) \cdot \alpha_i (a'_i)^{n-1} \cdot \alpha_i (a_i) \\
+%     &= \sum_ {a''} + u_i(a'_i) \cdot \alpha_i (a'_i)^{n}  +u_i(a'_i) \cdot \alpha_i (a'_i)^{n-1} \cdot \alpha_i (a_i)
+%     \\
+%     U_i(\alpha_i,\alpha_{-i}) &=  \sum_{a''} + u_i(a'_i) \cdot \alpha_i (a'_i)^{n} + u_i(a_i) \cdot \alpha_i(a_i)^{n-1} \cdot \alpha_i(a_i)
+% \end{align}
+% Aufgrund von \eqref{payout} und \eqref{vor} ist $U_i(\alpha'_i,\alpha_{-i}) > U_i(\alpha_i,\alpha_{-i})$.
+
+\subsection*{3.1}
+Gegeben:
+\begin{equation}\label{vor}
+    \alpha_i'(a'_i)=\alpha_i(a'_i)+\alpha_i(a_i) 
+\end{equation}
+Da Abweichen von der Strategie der anderen Spieler die beste Antwort ist, i.e. $a_i \notin B_i(\alpha_{-i})$ und $a'_i \in B_i(\alpha_{-i})$, gilt:\\
+\begin{equation}\label{payout}
+    u_i(a'_i)>u_i(a_i) \quad  \forall \alpha_{-i}
+\end{equation}
+Da 
+$\alpha'_i(a''_i) = \alpha_i(a''_i) \text{ für alle } a''_i \in A_i \setminus \{a_i, a'_i\}$
+gilt:
+\begin{equation}
+    \sum_ {a''} := \sum_{a''_i\in A_i \setminus \{a_i, a'_i\}} p_{\alpha'_i}(a''_i) u_i(a''_i) = \sum_{a''_i\in A_i \setminus \{a_i, a'_i\}} p_{\alpha_i}(a''_i) u_i(a''_i)
+\end{equation}
+\begin{align}
+    U_i(\alpha'_i,\alpha_{-i}) &=  \sum_ {a''} + u_i(a'_i) \cdot \alpha_i (a'_i)^{n-1} \cdot \alpha'_i(a'_i) \\
+    &= \sum_ {a''} + u_i(a'_i) \cdot \alpha_i (a'_i)^{n-1} (\alpha_i(a'_i) + \alpha_i (a_i)) \\
+    &= \sum_ {a''} + u_i(a'_i) \cdot \alpha_i (a'_i)^{n-1} \cdot \alpha_i(a'_i) +u_i(a'_i) \cdot \alpha_i (a'_i)^{n-1} \cdot \alpha_i (a_i) \\
+    &= \sum_ {a''} + u_i(a'_i) \cdot \alpha_i (a'_i)^{n}  +u_i(a'_i) \cdot \alpha_i (a'_i)^{n-1} \cdot \alpha_i (a_i)
+    \\
+    U_i(\alpha_i,\alpha_{-i}) &=  \sum_{a''} + u_i(a'_i) \cdot \alpha_i (a'_i)^{n} + u_i(a_i) \cdot \alpha_i(a_i)^{n-1} \cdot \alpha_i(a_i)
+\end{align}
+Setzt man die Gleichung nun gleich und kürzt $\sum_ {a''}$ erhählt man:
+\begin{equation}
+        u_i(a'_i) \cdot \alpha_i (a'_i)^{n}  +u_i(a'_i) \cdot \alpha_i (a'_i)^{n-1} \cdot \alpha_i (a_i) = u_i(a'_i) \cdot \alpha_i (a'_i)^{n} + u_i(a_i) \cdot \alpha_i(a_i)^{n-1} 
+\end{equation}
+\begin{equation}\label{widerspruch}
+        u_i(a'_i) \cdot \alpha_i (a'_i)^{n-1} \cdot \alpha_i (a_i) = u_i(a_i) \cdot \alpha_i(a_i)^{n-1} \cdot \alpha_i(a_i) \quad \lightning
+\end{equation}
+Aufgrund von \eqref{payout} (i.e. das Abweichen von der Strategie der Anderen ist besser als dieselbe Strategie zu spielen) folgt, dass \eqref{widerspruch} ein Widerspruch ist und die linke Seite strikt größer ist. Es folgt $U_i(\alpha'_i,\alpha_{-i}) > U_i(\alpha_i,\alpha_{-i})$ q.e.d.
+
+% \subsection*{3.2}
+% The players choose a strategy to gain the same utility from both options, i.e. set the utility difference to 0.
+% \begin{equation}
+% U_1=q*1+3(1-q)-q*2+1(1-q)\stackrel{!}{=}0
+% \end{equation}
+% \begin{equation}
+% q=\dfrac{2}{3}
+% \end{equation}
+% \begin{equation}
+% U_2=p*1+2(1-p)-2*p+1(1-p)\stackrel{!}{=}0
+% \end{equation}
+% \begin{equation}
+% p=\dfrac{1}{2}
+% \end{equation}
+% So player 1 plays A with probability $\dfrac{2}{3}$ and player 2 plays X with probability $\dfrac{1}{2}$ .
+
+\subsection*{3.2}
+Because the Game is finite a NE exists because of Nashs Theorem.\\
+Assume that $(\alpha_{1}^{*}, \alpha_{2}^{*})$ is a Nash equilibrium.\\
+Every action for every player is a best response, so using the support lemma we can only consider the support sets $\{A,B\}$ vs. $\{X,Y\}$.\\
+with $0 < \alpha_{1}^{*}(B) < 1$
+and
+$0 < \alpha_{2}^{*}(B) < 1$
+we get:
+\begin{align}
+    U_1(A,\alpha_{2}^{*}) &= U_1(B, \alpha_{2}^{*}) \\
+    1 \cdot \alpha_{2}^{*}(X) + 3 \cdot \alpha_{2}^{*}(Y) &= 2 \cdot \alpha_{2}^{*}(X) + 1 \cdot \alpha_{2}^{*}(Y) \\
+    2 \cdot \alpha_{2}^{*}(Y) &= \alpha_{2}^{*}(X) \\
+    2 \cdot \alpha_{2}^{*}(Y) &= 1 - \alpha_{2}^{*}(Y) \\
+    \Rightarrow \alpha_{2}^{*}(Y) = \dfrac{1}{3} &\text{ and } \alpha_{2}^{*}(X) = 1 - \dfrac{1}{3} = \dfrac{2}{3}
+\end{align}
+and similiar:
+\begin{align}
+    U_2(\alpha_{1}^{*} ,X) &= U_2(\alpha_{1}^{*}, Y) \\
+    1 \cdot \alpha_{1}^{*}(A) + 2 \cdot \alpha_{1}^{*}(B) &= 2 \cdot \alpha_{1}^{*}(A) + 1 \cdot \alpha_{1}^{*}(B) \\
+    \alpha_{1}^{*}(B) &= \alpha_{2}^{*}(A) \\
+    \Rightarrow \alpha_{1}^{*}(A) = \alpha_{1}^{*}(B) &= \dfrac{1}{2}
+\end{align}
+That makes our NE $(\alpha_{1}^{*}, \alpha_{2}^{*})$.
+\subsection*{3.3}
+\subsubsection*{(a)}
+
+% For Player 1:
+% \begin{align}
+%     \alpha(a) \geq 0 \text{,  }
+%     \alpha(b) \geq 0 \text{,  }
+%     \alpha(c) \geq 0 \text{,  }
+%     \alpha(a)+\alpha(b)+\alpha(c) = 1 \text{, }\\
+%     \alpha(a)\cdot u_1(a,x)+\alpha(b)\cdot u_1(b,x)+\alpha(c)\cdot u_1(c,x)=\alpha(b)+\alpha(c)\geq u \text{, }\\
+%     \alpha(a)\cdot u_1(a,y)+\alpha(b)\cdot u_1(b,y)+\alpha(c)\cdot u_1(c,y)=3\cdot \alpha(a)+\alpha(c)\geq u \text{, }\\
+%     \alpha(a)\cdot u_1(a,z)+\alpha(b)\cdot u_1(b,z)+\alpha(c)\cdot u_1(c,z)=3\cdot \alpha(a)+\alpha(b)\geq u \text{. }
+% \end{align}
+% For Player 2:
+% \begin{align}
+%     \alpha(x) \geq 0 \text{,  }
+%     \alpha(y) \geq 0 \text{,  }
+%     \alpha(z) \geq 0 \text{,  }
+%     \alpha(x)+\alpha(y)+\alpha(z) = 1 \text{, }\\
+%     \alpha(x)\cdot u_2(a,x)+\alpha(y)\cdot u_2(a,y)+\alpha(z)\cdot u_2(a,z)=\alpha(y)+3\cdot \alpha(z)\geq u \text{, }\\
+%     \alpha(x)\cdot u_2(b,x)+\alpha(y)\cdot u_2(b,y)+\alpha(z)\cdot u_2(b,z)=\alpha(x)+3\cdot \alpha(z)\geq u \text{, }\\
+%     \alpha(x)\cdot u_2(c,x)+\alpha(y)\cdot u_2(c,y)+\alpha(z)\cdot u_2(c,z)=\alpha(x)+\alpha(y)\geq u \text{. } 
+% \end{align}
+
+\begin{align}
+    A_1 = \lbrace a,b,c \rbrace \text{, } A_2 = \lbrace x, y, z \rbrace\\
+    (\alpha, \beta) \text{ is the Nash equilibrium with payoff profile }(u,v)\\
+    u- U_1(a,\beta) \geq 0 \text{ } \forall \text{ } a \in A_1\\
+    v- U_2(\alpha, b) \geq 0 \text{ } \forall \text{ } b \in A_2\\
+    \alpha(a) \cdot (u- U_1 (a, \beta)) = 0 \text{ } \forall \text{ } a \in A_1\\
+    \beta(b) \cdot (v - U_2(\alpha, b)) =0 \text{ } \forall \text{ }b \in A_2\\
+    \alpha(a) \geq =0 \text{ } \forall \text{ } a \in A_1\\
+    \sum_{a\in A_1} \alpha(a) =1\\
+    \beta(b) \geq 0 \text{ } \forall \text{ }b \in A_2\\
+    \sum_{b \in A_2} \beta(b) =1
+\end{align}
+Transforming LCP into LP with the support set $(supp(\alpha), supp(\beta)) = (\lbrace a,b,c\rbrace,\lbrace x,y,z \rbrace)$:\\
+\begin{align}
+    a \in supp(\alpha) \text{ } \forall \text{ } a \in A_1\\
+    u - \sum_{b \in A_2} \beta(b) \cdot u_1(a,b) = 0 \text{ } \forall \text{ } a \in A_1\\
+    \alpha(a) > 0 \text{ } \forall \text{ } a \in A_1\\
+    \sum_{a \in A_1} \alpha(a) = 1\\
+    b \in supp(\beta) \text{ } \forall \text{ } b \in A_2\\
+    v- \sum_{a \in A_1} \alpha(a) \cdot u_2(a,b) =0 \text{ } \forall \text{ } b \in A_2\\
+    \beta(b) > 0 \text{ } \forall \text{ } b \in A_2\\
+    \sum_{b\in A_2} \beta(b) =1
+\end{align}
+\subsection*{(b)}
+Player 1:\\
+with
+\begin{align}
+     u - \sum_{b \in A_2} \beta(b) \cdot u_1(a,b) = 0 \text{ } \forall \text{ } a \in A_1
+\end{align}
+we get: 
+\begin{align}
+     u = 3\beta(y) + 3\beta(z) \label{eq:ub_1}\\
+     u = \beta(x) + \beta(z)  \label{eq:ub_2}\\
+     u = \beta(x) + \beta(y) \label{eq:ub_3}\\
+\end{align}
+setting equation \ref{eq:ub_2} equals equation \ref{eq:ub_3}:
+\begin{align}
+    \beta(x) + \beta(z)= \beta(x) + \beta(y)\\
+    \beta(z) = \beta(y) \label{eq:betay}
+\end{align}
+equation \ref{eq:betay} in equation \ref{eq:ub_1}:
+\begin{align}
+    u = 6 \beta(y) \label{eq:u}
+\end{align}
+equation \ref{eq:u} in equation \ref{eq:ub_3}:
+\begin{align}
+    5\beta(y) = \beta(x) \label{eq:5beta}
+\end{align}
+with 
+\begin{align}
+    \beta(x)+\beta(y)+\beta(z) =1
+\end{align}
+and equation \ref{eq:5beta} and equation \ref{eq:betay}:
+\begin{align}
+    \beta(y) = \frac{1}{7}
+\end{align}
+Using equation \ref{eq:betay} we get:
+\begin{align}
+    \beta(z) = \frac{1}{7}
+\end{align}
+Therefore:
+\begin{align}
+    \beta(x) = \frac{5}{7}
+\end{align}
+Using equation \ref{eq:u}:
+\begin{align}
+    u = \frac{6}{7}
+\end{align}
+
+Player 2:\\
+With
+\begin{align}
+    u - \sum_{b \in A_2} \beta(b) \cdot u_1(a,b) = 0 \text{ } \forall \text{ } a \in A_1
+\end{align}
+We get:
+\begin{align}
+    v=\alpha(b)+\alpha(c) \label{eq:I}\\
+    v=\alpha(a)+\alpha(c) \label{eq:II}\\
+    v=3\alpha(a)+3\alpha(b) \label{eq:III}
+\end{align}
+equation \ref{eq:I} in equation \ref{eq:II}:
+\begin{align}
+    \alpha(b) = \alpha(a) \label{eq:IV}
+\end{align}
+equation \ref{eq:IV} in equation\ref{eq:III}:
+\begin{align}
+    v=6\alpha(a) \label{eq:V}
+\end{align}
+equation \ref{eq:V} in equation \ref{eq:II}:
+\begin{align}
+    5\alpha(a) = \alpha(c) \label{eq:VI}
+\end{align}
+With the given condition:
+\begin{align}
+    \alpha(a)+\alpha(b)+\alpha(c) =1
+\end{align}
+combined with equation \ref{eq:IV} and equation \ref{eq:VI} we get:
+\begin{align}
+    \alpha(a) = \frac{1}{7}\\
+    \alpha(b) = \frac{1}{7}\\
+    \alpha(c) = \frac{5}{7}\\
+    v = \frac{6}{7}
+\end{align}
+
+The expected payoff of the NE is $(\frac{6}{7}, \frac{6}{7})$
+
+\end{document}
